@@ -98,7 +98,7 @@ return {
           },
         },
         pylsp = {
-          enabled = false,
+          enabled = true,
           filetypes = { "python" },
           settings = {
             pylsp = {
