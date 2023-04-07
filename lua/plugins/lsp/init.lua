@@ -220,7 +220,7 @@ return {
             extra_args = { "--ignore-words=/Users/wzx/software/codespell/words" },
           }),
           nls.builtins.diagnostics.flake8.with({
-            extra_args = { "--max-line-length=128", "--extend-ignore=E501,E203,E402,E741,W605,F841" },
+            extra_args = { "--max-line-length=128", "--extend-ignore=E501,E203,E402,E741,W605,F841,E714,E731,E713" },
           }),
           nls.builtins.formatting.black.with({
             extra_args = { "--line-length=120", "--skip-string-normalization" },
