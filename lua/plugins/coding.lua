@@ -36,7 +36,8 @@ return {
     "hrsh7th/nvim-cmp",
     version = false, -- last release is way too old
     -- event = "InsertEnter",
-    event = { "BufReadPost", "BufNewFile", "InsertEnter" },
+    -- event = { "BufReadPost", "BufNewFile", "InsertEnter" },
+     event = { "InsertEnter" },
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-buffer",
@@ -68,8 +69,8 @@ return {
           end,
         },
         mapping = cmp.mapping.preset.insert({
-          ["<tab>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-          ["<S-tab>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+          ["<tab>"] = cmp.mapping.select_next_item(), --{ behavior = cmp.SelectBehavior.Insert }),
+          ["<S-tab>"] = cmp.mapping.select_prev_item(), -- { behavior = cmp.SelectBehavior.Insert }),
           -- ["<tab>"] = cmp.mapping.select_next_item() , --{ behavior = cmp.SelectBehavior.Insert }),
           -- ["<S-tab>"] = cmp.mapping.select_prev_item(), -- { behavior = cmp.SelectBehavior.Insert }),
           ["<C-k>"] = cmp.mapping.scroll_docs(-4),
@@ -77,10 +78,11 @@ return {
           ["<C-Space>"] = cmp.mapping.complete(),
           ["<C-e>"] = cmp.mapping.abort(),
           ["<CR>"] = cmp.mapping.confirm({
+            behavior = cmp.ConfirmBehavior.Replace,
             select = true,
           }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
           ["<S-CR>"] = cmp.mapping.confirm({
-            behavior = cmp.ConfirmBehavior.Replace,
+            behavior = cmp.ConfirmBehavior.Insert,
             select = true,
           }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
         }),
