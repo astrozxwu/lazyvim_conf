@@ -1,7 +1,6 @@
 return {
-
     { "folke/noice.nvim", enabled = true },
-    { "rcarriga/nvim-notify", enabled = true },
+    { "rcarriga/nvim-notify", enabled = false },
     {
         "echasnovski/mini.indentscope",
         enabled = true,
