@@ -76,12 +76,12 @@ return {
                     },
                 },
                 pyright = {
-                    enabled = false,
+                    enabled = true,
                     settings = {
                         pyright = { autoImportCompletion = true },
                         python = {
                             analysis = {
-                                autoSearchPaths = true,
+                                autoSearchPaths = false,
                                 diagnosticMode = "workspace",
                                 useLibraryCodeForTypes = true,
                                 typeCheckingMode = "basic",
@@ -99,13 +99,13 @@ return {
                     },
                 },
                 pylsp = {
-                    enabled = true,
+                    enabled = false,
                     filetypes = { "python" },
                     settings = {
                         pylsp = {
                             plugins = {
                                 pycodestyle = {
-                                    enabled = true,
+                                    enabled = false,
                                     ignore = { "E501" },
                                 },
                                 autopep8 = {

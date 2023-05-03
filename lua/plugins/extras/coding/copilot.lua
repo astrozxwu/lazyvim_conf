@@ -35,7 +35,7 @@ return {
         ---@param opts cmp.ConfigSchema
         opts = function(_, opts)
             local cmp = require("cmp")
-            table.insert(opts.sources, 1, { name = "copilot" })
+            table.insert(opts.sources, 1, { name = "copilot", priority_weight = 100, group_index = 1 })
             -- for _, a in pairs(opts.sources) do
             --   print(_, a)
             -- end
@@ -54,24 +54,24 @@ return {
                     return confirm(...)
                 end,
             })
-            opts.sorting = {
-                priority_weight = 2,
-                comparators = {
-                    require("copilot_cmp.comparators").prioritize,
-
-                    -- Below is the default comparitor list and order for nvim-cmp
-                    -- cmp.config.compare.offset,
-                    -- cmp.config.compare.scopes, --this is commented in nvim-cmp too
-                    cmp.config.compare.exact,
-                    cmp.config.compare.score,
-                    cmp.config.compare.recently_used,
-                    cmp.config.compare.locality,
-                    cmp.config.compare.kind,
-                    cmp.config.compare.sort_text,
-                    cmp.config.compare.length,
-                    cmp.config.compare.order,
-                },
-            }
+            -- opts.sorting = {
+            --     priority_weight = 2,
+            --     comparators = {
+            --         require("copilot_cmp.comparators").prioritize,
+            --
+            --         -- Below is the default comparitor list and order for nvim-cmp
+            --         -- cmp.config.compare.offset,
+            --         -- cmp.config.compare.scopes, --this is commented in nvim-cmp too
+            --         cmp.config.compare.exact,
+            --         cmp.config.compare.score,
+            --         cmp.config.compare.recently_used,
+            --         cmp.config.compare.locality,
+            --         cmp.config.compare.kind,
+            --         cmp.config.compare.sort_text,
+            --         cmp.config.compare.length,
+            --         cmp.config.compare.order,
+            --     },
+            -- }
             -- cmp.setup(opts)
         end,
     },

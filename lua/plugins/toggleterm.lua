@@ -19,6 +19,7 @@ return {
         direction = "horizontal",
         close_on_exit = true, -- close the terminal window when the process exits
         shell = vim.o.shell, -- change the default shell
+        autochdir = true, -- when neovim changes it current directory the terminal will change it's own when next it's opened
         -- This field is only relevant if direction is set to 'float'
         float_opts = {
             -- The border key is *almost* the same as 'nvim_win_open'
