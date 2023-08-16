@@ -5,16 +5,22 @@ return {
         build = (not jit.os:find("Windows"))
                 and "echo -e 'NOTE: jsregexp is optional, so not a big deal if it fails to build\n'; make install_jsregexp"
             or nil,
-        dependencies = {
-            "rafamadriz/friendly-snippets",
-            config = function()
-                require("luasnip.loaders.from_vscode").lazy_load()
-            end,
-        },
+        -- dependencies = {
+        --     "rafamadriz/friendly-snippets",
+        --     config = function()
+        --         require("luasnip.loaders.from_vscode").lazy_load()
+        --     end,
+        -- },
         opts = {
             history = true,
             delete_check_events = "TextChanged",
+            enable_autosnippets = true,
         },
+        config = function(_, opts)
+            local ls = require("luasnip")
+            ls.setup(opts)
+            require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/luasnippets/" })
+        end,
         -- stylua: ignore
         keys = {
             {
@@ -89,8 +95,14 @@ return {
                 sources = cmp.config.sources({
                     -- { name = "copilot" , group_index = 1, priority_weight = 100},
                     { name = "nvim_lsp", group_index = 2, priority_weight = 50 },
-                    { name = "luasnip", max_item_count = 5, group_index = 2, priority_weight = 30 },
-                    { name = "buffer", max_item_count = 3, group_index = 3 },
+                    {
+                        name = "luasnip",
+                        max_item_count = 5,
+                        group_index = 2,
+                        priority_weight = 30,
+                        option = { show_autosnippets = true },
+                    },
+                    -- { name = "buffer", max_item_count = 3, group_index = 3 },
                     { name = "path", max_item_count = 10, group_index = 2, priority_weight = 20 },
                 }),
                 formatting = {

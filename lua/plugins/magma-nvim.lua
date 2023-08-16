@@ -1,3 +1,3 @@
 return {
-    'dccsillag/magma-nvim'
+    { "dccsillag/magma-nvim", lazy = false },
 }
